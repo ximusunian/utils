@@ -46,6 +46,17 @@ Checkers.isIdNumber =  function(idcode){
   console.log(1111)
   // 返回验证结果，校验码和格式同时正确才算是合法的身份证号码
   return last === last_no && format ? true : false;
-}
+};
+
+Checkers.getUrlAllParam = function(newUrl, ...args) {
+  if (args.length === 0) return undefined;
+  const url = decodeURIComponent(newUrl);
+  const reg =
+    args.length === 1
+      ? new RegExp(`[&?]${args[0]}=([^&%#]+)`)
+      : new RegExp(`[&?](?:${args.join("|")})=([^&%#]+)`);
+  const matchArray = url.match(reg);
+  return matchArray === null ? undefined : matchArray[1];
+},
 
 export default Checkers;
