@@ -48,6 +48,7 @@ Checkers.isIdNumber =  function(idcode){
   return last === last_no && format ? true : false;
 };
 
+// 截取url中的参数
 Checkers.getUrlAllParam = function(newUrl, ...args) {
   if (args.length === 0) return undefined;
   const url = decodeURIComponent(newUrl);
